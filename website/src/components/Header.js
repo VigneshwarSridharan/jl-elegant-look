@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const HeaderContent = ({ isSticky }) => {
   return (
     <div className={`hdr-content ${isSticky ? "hdr-content-sticky" : ""}`}>
@@ -13,12 +15,12 @@ const HeaderContent = ({ isSticky }) => {
           </div>
           {/* <!-- /Menu Toggle --> */}
           <div className="col-auto hdr-logo">
-            <a href="index.html" className="logo">
+            <Link href={"/"} className="logo">
               <img
                 srcSet="/images/logo.png 1x, /images/logo2x.png 2x"
                 alt="Logo"
               />
-            </a>
+            </Link>
           </div>
           <div
             className={`hdr-nav hide-mobile ${
@@ -29,16 +31,18 @@ const HeaderContent = ({ isSticky }) => {
           >
             <ul className="mmenu">
               <li>
-                <a href="category.html">Home</a>
+                <Link href={"/"} className="active">
+                  Home
+                </Link>
               </li>
               <li>
-                <a href="category.html">About Us</a>
+                <Link href={"/about-us"}>About Us</Link>
               </li>
               <li>
-                <a href="category.html">Products</a>
+                <Link href={"/products"}>Products</Link>
               </li>
               <li>
-                <a href="category.html">Contact Us</a>
+                <Link href={"/contact-us"}>Contact Us</Link>
               </li>
             </ul>
           </div>
@@ -73,6 +77,32 @@ const HeaderContent = ({ isSticky }) => {
                     </div>
                   </div>
                 </div>
+              </div>
+
+              <div className="hdr_container_mobile show-mobile">
+                {/* <!-- Header Account --> */}
+                <div className="dropdn dropdn_account dropdn_fullheight">
+                  <a
+                    href="#"
+                    className="dropdn-link js-dropdn-link"
+                    data-panel="#dropdnAccount"
+                  >
+                    <i className="icon-user"></i>
+                    <span className="dropdn-link-txt">Account</span>
+                  </a>
+                </div>
+                {/* <!-- /Header Account --> */}
+              </div>
+              <div className="dropdn dropdn_fullheight minicart">
+                <a
+                  href="#"
+                  className="dropdn-link js-dropdn-link minicart-link"
+                  data-panel="#dropdnMinicart"
+                >
+                  <i className="icon-basket"></i>
+                  <span className="minicart-qty">3</span>
+                  {/* <span className="minicart-total hide-mobile">$34.99</span> */}
+                </a>
               </div>
             </div>
           </div>
