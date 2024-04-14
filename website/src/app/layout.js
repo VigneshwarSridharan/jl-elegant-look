@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
         />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Foxic HTML Template - Index Page</title>
+
         <link
           rel="shortcut icon"
           type="image/x-icon"
@@ -41,9 +41,18 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body className="has-smround-btns has-loader-bg equal-height">
+      <body className="has-smround-btns has-loader-bg equal-height has-sticky">
         <Header />
-        {children}
+
+        <div className="page-content">{children}</div>
+        <script src="/js/vendor-special/lazysizes.min.js"></script>
+        <script src="/js/vendor-special/ls.bgset.min.js"></script>
+        <script src="/js/vendor-special/ls.aspectratio.min.js"></script>
+        <script src="/js/vendor-special/jquery.min.js"></script>
+        <script src="/js/vendor-special/jquery.ez-plus.js"></script>
+        <script src="/js/vendor-special/instafeed.min.js"></script>
+        <script src="/js/vendor/vendor.min.js"></script>
+        <script src="/js/app-html.js"></script>
       </body>
     </html>
   );
