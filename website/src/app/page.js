@@ -21,18 +21,18 @@ export default function Home() {
               <div className="bnslider-slide">
                 <div
                   className="bnslider-image-mobile lazyload"
-                  data-bgset="images/skins/fashion/slider/slide-fashion-02-m.png"
+                  data-bgset="/images/slider/slide-fashion-02-m.png"
                 ></div>
                 <div
                   className="bnslider-image lazyload"
-                  data-bgset="images/skins/fashion/slider/slide-fashion-02.png"
+                  data-bgset="/images/slider/slide-fashion-02.png"
                 ></div>
                 <div className="bnslider-text-wrap bnslider-overlay">
                   <div className="bnslider-text-content txt-middle txt-right txt-middle-m txt-center-m">
                     <div className="bnslider-text-content-flex">
                       <div
                         className="bnslider-vert w-s-60 w-ms-100"
-                        style="padding: 0px"
+                        style={{ padding: "0px" }}
                       >
                         <div
                           className="bnslider-text order-1 mt-sm bnslider-text--md text-center data-ini"
@@ -58,7 +58,7 @@ export default function Home() {
                           className="btn-wrap text-center order-4 mt-md"
                           data-animation="fadeIn"
                           data-animation-delay="2000"
-                          style="opacity: 1"
+                          style={{ opacity: 1 }}
                         >
                           <a
                             href="https://bit.ly/3eJX5XE"
@@ -76,18 +76,18 @@ export default function Home() {
               <div className="bnslider-slide">
                 <div
                   className="bnslider-image-mobile lazyload"
-                  data-bgset="images/skins/fashion/slider/slide-fashion-01-m.png"
+                  data-bgset="/images/slider/slide-fashion-01-m.png"
                 ></div>
                 <div
                   className="bnslider-image lazyload"
-                  data-bgset="images/skins/fashion/slider/slide-fashion-01.png"
+                  data-bgset="/images/slider/slide-fashion-01.png"
                 ></div>
                 <div className="bnslider-text-wrap bnslider-overlay">
                   <div className="bnslider-text-content txt-middle txt-left txt-middle-m txt-center-m">
                     <div className="bnslider-text-content-flex">
                       <div
                         className="bnslider-vert w-s-60 w-ms-100"
-                        style="padding: 0px"
+                        style={{ padding: "0px" }}
                       >
                         <div
                           className="bnslider-text order-1 mt-0 bnslider-text--md text-center data-ini"
@@ -113,7 +113,7 @@ export default function Home() {
                           className="btn-wrap text-center order-4 mt-md"
                           data-animation="fadeIn"
                           data-animation-delay="2000"
-                          style="opacity: 1"
+                          style={{ opacity: 1 }}
                         >
                           <a
                             href="https://bit.ly/3eJX5XE"
@@ -134,19 +134,19 @@ export default function Home() {
                 data-video-type="video"
                 data-slick-index="2"
                 aria-hidden="true"
-                style="
-                  width: 1903px;
-                  position: relative;
-                  left: -3806px;
-                  top: 0px;
-                  z-index: 998;
-                  opacity: 0;
-                  transition: opacity 500ms ease 0s;
-                "
+                style={{
+                  width: "1903px",
+                  position: "relative",
+                  left: "-3806px",
+                  top: "0px",
+                  zIndex: 998,
+                  opacity: 0,
+                  transition: "opacity 500ms ease 0s",
+                }}
                 id="slick-slide02"
               >
                 <div className="video-wrap">
-                  <video playsinline="" loop="" preload="auto">
+                  <video playsInline="" loop="" preload="auto">
                     <source
                       src="https://cdn.shopify.com/s/files/1/0201/0942/6742/files/video-girl.mp4?v=1594287483"
                       type="video/mp4"
@@ -164,7 +164,7 @@ export default function Home() {
                 <div className="bnslider-text-wrap bnslider-overlay">
                   <div className="bnslider-text-content txt-middle txt-center txt-middle-m txt-center-m">
                     <div className="bnslider-text-content-flex">
-                      <div className="bnslider-vert" style="padding: 0px">
+                      <div className="bnslider-vert" style={{ padding: "0px" }}>
                         <div
                           className="bnslider-text order-1 mt-sm bnslider-text--md text-center data-ini"
                           data-animation="fadeInUp"
@@ -179,7 +179,7 @@ export default function Home() {
                           className="btn-wrap text-center order-4 mt-md"
                           data-animation="fadeIn"
                           data-animation-delay="2000"
-                          style="opacity: 1"
+                          style={{ opacity: 1 }}
                         >
                           <a href="#" target="_self" className="btn">
                             {" "}
