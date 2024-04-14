@@ -1,5 +1,5 @@
 {
-    "installDependencies": false,
+    "installDependencies": true,
     "startCommand": "cd website && yarn dev",
     "env": {
         "NODE_ENV": "development"
