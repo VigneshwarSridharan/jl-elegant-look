@@ -1,4 +1,85 @@
-const Slider = () => {
+"use client";
+import React from "react";
+import Slider from "react-slick";
+
+function SimpleSlider() {
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    adaptiveHeight: true,
+  };
+  return (
+    <div className="holder fullwidth full-nopad mt-0">
+      <div className="container">
+        <Slider {...settings}>
+          <div>
+            <div className="bnslider-slide" style={{ height: "100vh" }}>
+              <div
+                className="bnslider-image-mobile lazyload"
+                data-bgset="/images/slider/slide-fashion-02-m.png"
+              ></div>
+              <div
+                className="bnslider-image lazyload"
+                style={{
+                  backgroundImage: `url("https://source.unsplash.com/random/1920x700?girls-fashion$3")`,
+                }}
+              ></div>
+              <div className="bnslider-text-wrap bnslider-overlay">
+                <div className="bnslider-text-content txt-middle txt-right txt-middle-m txt-center-m">
+                  <div className="bnslider-text-content-flex">
+                    <div
+                      className="bnslider-vert w-s-60 w-ms-100"
+                      style={{ padding: "0px" }}
+                    >
+                      <div className="bnslider-text order-1 mt-sm bnslider-text--md text-center data-ini">
+                        Best Price This Year
+                      </div>
+                      <div className="bnslider-text order-2 mt-sm bnslider-text--xs text-center data-ini">
+                        eCommerce HTML Template
+                      </div>
+                      <div
+                        className="btn-wrap text-center order-4 mt-md"
+                        style={{ opacity: 1 }}
+                      >
+                        <a
+                          href="https://bit.ly/3eJX5XE"
+                          target="_blank"
+                          className="btn"
+                        >
+                          Shop now
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3>2</h3>
+          </div>
+          <div>
+            <h3>3</h3>
+          </div>
+          <div>
+            <h3>4</h3>
+          </div>
+          <div>
+            <h3>5</h3>
+          </div>
+          <div>
+            <h3>6</h3>
+          </div>
+        </Slider>
+      </div>
+    </div>
+  );
+}
+
+const Slider1 = () => {
   return (
     <div className="holder fullwidth full-nopad mt-0">
       <div className="container">
@@ -76,7 +157,9 @@ const Slider = () => {
               ></div>
               <div
                 className="bnslider-image lazyload"
-                data-bgset="/images/slider/slide-fashion-01.png"
+                style={{
+                  backgroundImage: `url("https://source.unsplash.com/random/720x675?girls-fashion$3")`,
+                }}
               ></div>
               <div className="bnslider-text-wrap bnslider-overlay">
                 <div className="bnslider-text-content txt-middle txt-left txt-middle-m txt-center-m">
@@ -198,4 +281,5 @@ const Slider = () => {
   );
 };
 
-export default Slider;
+// export default Slider;
+export default SimpleSlider;

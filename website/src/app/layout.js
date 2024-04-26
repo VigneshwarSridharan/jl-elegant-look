@@ -27,6 +27,24 @@ export default function RootLayout({ children }) {
         />
         {/* <!-- Vendor CSS --> */}
         <link href="/css/vendor/bootstrap.min.css" rel="stylesheet" />
+        {/* <!-- Latest compiled and minified CSS --> */}
+        {/* <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+          crossorigin="anonymous"
+        ></link> */}
+        {/* <link
+          rel="stylesheet"
+          type="text/css"
+          charset="UTF-8"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+        />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+        /> */}
         <link href="/css/vendor/vendor.min.css" rel="stylesheet" />
         {/* <!-- Custom styles for this template --> */}
         <link href="/css/style.css" rel="stylesheet" />
