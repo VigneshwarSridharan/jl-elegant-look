@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import Slider from "./components/Slider";
+import Collections from "./components/Collections";
 
 export default function Home() {
   return (
@@ -63,6 +64,7 @@ export default function Home() {
         </div>
       </div>
 
+      <Collections />
       <p>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta cum
         consequatur provident earum aliquid quibusdam voluptas excepturi libero
