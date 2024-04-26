@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import "./globals.css";
+import Footer from "@/components/Footer";
 
 export const metadata = {
   title: "JL Elegant Look",
@@ -63,6 +64,7 @@ export default function RootLayout({ children }) {
         <Header />
 
         <div className="page-content">{children}</div>
+        <Footer />
         {/* <script src="/js/vendor-special/lazysizes.min.js"></script>
         <script src="/js/vendor-special/ls.bgset.min.js"></script>
         <script src="/js/vendor-special/ls.aspectratio.min.js"></script>

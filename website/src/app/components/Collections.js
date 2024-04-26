@@ -1,16 +1,34 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const ProductItem = ({ id = 1 }) => {
   const [isHover, setIsHover] = useState(false);
+  const productElm = useRef(null);
+
+  useEffect(() => {
+    if (productElm.current) {
+      const height = productElm.current.clientHeight;
+      productElm.current.addEventListener("mouseover", ({ currentTarget }) => {
+        productElm.current.classList.add("hovered");
+        productElm.current.style.height = `${height}px`;
+      });
+      productElm.current.addEventListener("mouseout", () => {
+        productElm.current.classList.remove("hovered");
+        productElm.current.style.height = null;
+      });
+    }
+    return () => {
+      if (productElm.current) {
+        productElm.current.removeEventListener("mouseover", () => {});
+        productElm.current.removeEventListener("mouseout", () => {});
+      }
+    };
+  }, []);
 
   return (
     <div
-      className={`prd prd--style2 prd-labels--max prd-labels-shadow prd-w-lg ${
-        isHover ? "hovered" : ""
-      }`}
-      onMouseOver={(e) => setIsHover(true)}
-      onMouseLeave={(e) => setIsHover(false)}
+      ref={productElm}
+      className={`prd prd--style2 prd-labels--max prd-labels-shadow prd-w-lg `}
     >
       <div className="prd-inside">
         <div className="prd-img-area">
@@ -31,7 +49,7 @@ const ProductItem = ({ id = 1 }) => {
         <div className="prd-info">
           <div className="prd-info-wrap">
             <div className="prd-tag">
-              <a href="#">FOXic</a>
+              <a href="#">Wedding Dress</a>
             </div>
             <h2 className="prd-title">
               <a href="product.html">Leather Pegged Pants</a>
@@ -40,7 +58,13 @@ const ProductItem = ({ id = 1 }) => {
           <div className="prd-hovers">
             <div className="prd-circle-labels"></div>
             <div className="prd-price">
-              <div className="price-new">$ 180</div>
+              <div className="price-new">
+                {(id * 500).toLocaleString("en-IN", {
+                  maximumFractionDigits: 0,
+                  style: "currency",
+                  currency: "INR",
+                })}
+              </div>
             </div>
             <div className="prd-action">
               <div className="prd-action-left">
@@ -87,13 +111,17 @@ function Collections() {
         </div>
         <div className="prd-grid-wrap">
           <div className="prd-grid data-to-show-4 data-to-show-md-3 data-to-show-sm-2 data-to-show-xs-2">
-            <ProductItem id={1} />
             <ProductItem id={2} />
+            <ProductItem id={6} />
             <ProductItem id={3} />
-            <ProductItem id={4} />
             <ProductItem id={5} />
+            <ProductItem id={8} />
+            <ProductItem id={7} />
+            <ProductItem id={1} />
+            <ProductItem id={4} />
           </div>
         </div>
+        <div></div>
       </div>
     </div>
   );
