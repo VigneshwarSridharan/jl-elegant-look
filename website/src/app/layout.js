@@ -1,14 +1,45 @@
+import { cache } from "react";
 import Header from "@/components/Header";
 import "./globals.css";
 import Footer from "@/components/Footer";
+import APIService from "@/lib/APIService";
+import { ENDPOINTS } from "@/constants";
+import { get } from "lodash";
+import AppContext from "@/lib/context/AppContext";
+import { getAsset } from "@/lib/utils/functions";
 
-export const metadata = {
-  title: "JL Elegant Look",
-  description:
-    "JL Elegant Look specializes in crafting exquisite and sophisticated costumes, perfect for elevating any special occasion with timeless elegance and style. Our attention to detail and commitment to quality ensure that every garment embodies luxury and grace.",
+export const revalidate = 0;
+
+export const getData = cache(async () => {
+  const res = await APIService.get(ENDPOINTS.COMMON, {
+    params: {
+      populate: "*",
+    },
+  });
+
+  const data = get(res, "data.data.attributes");
+
+  console.log("getData...");
+
+  return data;
+});
+
+export const generateMetadata = async () => {
+  const siteDetails = await getData();
+  const { siteName, address } = siteDetails;
+
+  return {
+    title: siteName,
+    description: address,
+  };
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const siteDetails = await getData();
+  const { siteName, address, favicon, logo } = siteDetails;
+
+  console.log("RootLayout");
+
   return (
     <html lang="en">
       <head>
@@ -24,7 +55,7 @@ export default function RootLayout({ children }) {
         <link
           rel="shortcut icon"
           type="image/x-icon"
-          href="/images/favicon.ico"
+          href={getAsset(favicon)}
         />
         {/* <!-- Vendor CSS --> */}
         <link href="/css/vendor/bootstrap.min.css" rel="stylesheet" />
@@ -60,11 +91,12 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
+
       <body className="has-smround-btns has-loader-bg equal-height has-sticky">
-        <Header />
+        <Header context={siteDetails} />
 
         <div className="page-content">{children}</div>
-        <Footer />
+        <Footer context={siteDetails} />
         {/* <script src="/js/vendor-special/lazysizes.min.js"></script>
         <script src="/js/vendor-special/ls.bgset.min.js"></script>
         <script src="/js/vendor-special/ls.aspectratio.min.js"></script>

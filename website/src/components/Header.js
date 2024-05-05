@@ -1,6 +1,10 @@
+import { SERVER_URL } from "@/constants";
+import { getAsset } from "@/lib/utils/functions";
+import { get } from "lodash";
 import Link from "next/link";
 
-const HeaderContent = ({ isSticky }) => {
+const HeaderContent = ({ isSticky, logo }) => {
+  const logoUrl = getAsset(logo);
   return (
     <div className={`hdr-content ${isSticky ? "hdr-content-sticky" : ""}`}>
       <div className="container">
@@ -17,7 +21,8 @@ const HeaderContent = ({ isSticky }) => {
           <div className="col-auto hdr-logo">
             <Link href={"/"} className="logo">
               <img
-                srcSet="/images/logo.png 1x, /images/logo2x.png 2x"
+                src={`${logoUrl}`}
+                // srcSet="/images/logo.png 1x"
                 alt="Logo"
               />
             </Link>
@@ -112,12 +117,13 @@ const HeaderContent = ({ isSticky }) => {
   );
 };
 
-const Header = () => {
+const Header = ({ context }) => {
+  const { logo } = context;
   return (
     <header className="hdr-wrap">
-      <HeaderContent isSticky />
+      <HeaderContent isSticky logo={logo} />
       <div className="hdr">
-        <HeaderContent />
+        <HeaderContent logo={logo} />
       </div>
     </header>
   );

@@ -1,4 +1,8 @@
-const Footer = () => {
+import { getAsset } from "@/lib/utils/functions";
+
+const Footer = ({ context }) => {
+  const { address, PhoneNumbers, emailAddresses, socialMedia, logo } = context;
+  const logoUrl = getAsset(logo);
   return (
     <footer className="page-footer footer-style-6">
       <div className="holder">
@@ -24,7 +28,7 @@ const Footer = () => {
                 <div className="text">
                   <h4>Best price</h4>
                   <p>
-                    We'll match the product prices of key online and local
+                    We{"'"}ll match the product prices of key online and local
                     competitors for immediately
                   </p>
                 </div>
@@ -52,42 +56,40 @@ const Footer = () => {
               <div className="footer-block">
                 <div className="footer-logo">
                   <a href="index.html">
-                    <img
-                      srcSet="/images/logo.png 1x, /images/logo2x.png 2x"
-                      alt="Logo"
-                    />
+                    <img src={logoUrl} alt="Logo" />
                   </a>
                 </div>
                 <div className="collapsed-content">
                   <ul>
+                    <li>Address: {address}</li>
                     <li>
                       E-mail:
-                      <a href="mailto:sales@jlelegantlook.com">
-                        sales@jlelegantlook.com
-                      </a>
+                      {emailAddresses.map((item) => (
+                        <a href={`mailto:${item.value}`} key={item.id}>
+                          {item.value}
+                        </a>
+                      ))}
                     </li>
-                    <li>Hours: 10:00 - 18:00, Mon - Fri</li>
+                    <li>
+                      Phone:
+                      {PhoneNumbers.map((item) => (
+                        <a href={`tel:${item.value}`} key={item.id}>
+                          {item.value}
+                        </a>
+                      ))}
+                    </li>
                   </ul>
                 </div>
                 <ul className="social-list">
-                  <li>
-                    <a href="#" className="icon icon-facebook"></a>
-                  </li>
-                  <li>
-                    <a href="#" className="icon icon-twitter"></a>
-                  </li>
-                  <li>
-                    <a href="#" className="icon icon-google"></a>
-                  </li>
-                  <li>
-                    <a href="#" className="icon icon-vimeo"></a>
-                  </li>
-                  <li>
-                    <a href="#" className="icon icon-youtube"></a>
-                  </li>
-                  <li>
-                    <a href="#" className="icon icon-pinterest"></a>
-                  </li>
+                  {socialMedia.map((item) => (
+                    <li key={item.id}>
+                      <a
+                        href={item.link}
+                        className={item.icon}
+                        target="_blank"
+                      ></a>
+                    </li>
+                  ))}
                 </ul>
                 <div className="d-lg-none mt-3">
                   <div className="box-coupon">

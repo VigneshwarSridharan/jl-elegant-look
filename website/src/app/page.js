@@ -2,8 +2,10 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import Slider from "./components/Slider";
 import Collections from "./components/Collections";
+import { API_URL, ENDPOINTS } from "@/constants";
+import { get } from "lodash";
 
-export default function Home() {
+export default async function Home() {
   return (
     <>
       <Slider />
