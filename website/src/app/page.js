@@ -1,14 +1,31 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import { cache } from "react";
 import Slider from "./components/Slider";
 import Collections from "./components/Collections";
-import { API_URL, ENDPOINTS } from "@/constants";
+import { ENDPOINTS } from "@/constants";
 import { get } from "lodash";
+import APIService from "@/lib/APIService";
+
+export const getData = cache(async (params) => {
+  const res = await APIService.get(ENDPOINTS.COMMON, {
+    params: params || {
+      populate: "*",
+    },
+  });
+
+  const data = get(res, "data.data.attributes");
+
+  return data;
+});
 
 export default async function Home() {
+  const params = {
+    populate: ["banners"],
+  };
+  const { banners } = await getData(params);
+  console.log("banners", banners);
   return (
     <>
-      <Slider />
+      <Slider banners={banners.data} />
 
       <div className="holder holder-mt-xsmall">
         <div className="container">

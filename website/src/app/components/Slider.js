@@ -1,8 +1,9 @@
 "use client";
+import { getAsset } from "@/lib/utils/functions";
 import React from "react";
 import Slider from "react-slick";
 
-function SimpleSlider() {
+function SimpleSlider({ banners = [] }) {
   var settings = {
     dots: true,
     infinite: true,
@@ -15,10 +16,9 @@ function SimpleSlider() {
     <div className="holder fullwidth full-nopad mt-0">
       <div className="container">
         <Slider {...settings}>
-          <img src="https://source.unsplash.com/random/1920x700?fashion$1" />
-          <img src="https://source.unsplash.com/random/1920x700?fashion$2" />
-          <img src="https://source.unsplash.com/random/1920x700?fashion$3" />
-          <img src="https://source.unsplash.com/random/1920x700?fashion$4" />
+          {banners.map((banner) => (
+            <img src={getAsset(banner)} key={banner.id} />
+          ))}
         </Slider>
       </div>
     </div>

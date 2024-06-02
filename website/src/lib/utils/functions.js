@@ -6,5 +6,7 @@ export const getAsset = (arg) => {
   if (typeof arg === "string") {
     return asserURL + arg;
   }
-  return asserURL + get(arg, "data.attributes.url");
+  return (
+    asserURL + (get(arg, "data.attributes.url") || get(arg, "attributes.url"))
+  );
 };

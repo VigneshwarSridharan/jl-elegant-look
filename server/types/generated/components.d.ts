@@ -1,5 +1,18 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface CommonSeo extends Schema.Component {
+  collectionName: 'components_common_seos';
+  info: {
+    displayName: 'seo';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    image: Attribute.Media;
+  };
+}
+
 export interface CommonSingleText extends Schema.Component {
   collectionName: 'components_common_single_texts';
   info: {
@@ -25,6 +38,7 @@ export interface CommonSocialMedia extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'common.seo': CommonSeo;
       'common.single-text': CommonSingleText;
       'common.social-media': CommonSocialMedia;
     }

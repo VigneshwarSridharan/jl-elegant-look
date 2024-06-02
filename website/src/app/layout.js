@@ -10,35 +10,41 @@ import { getAsset } from "@/lib/utils/functions";
 
 export const revalidate = 0;
 
-export const getData = cache(async () => {
+export const getData = cache(async (params) => {
   const res = await APIService.get(ENDPOINTS.COMMON, {
-    params: {
+    params: params || {
       populate: "*",
     },
   });
 
   const data = get(res, "data.data.attributes");
 
-  console.log("getData...");
-
   return data;
 });
 
 export const generateMetadata = async () => {
-  const siteDetails = await getData();
-  const { siteName, address } = siteDetails;
+  const params = {
+    fields: ["siteName"],
+    populate: ["seo", "seo.image"],
+  };
+  const siteDetails = await getData(params);
+  const { siteName, seo } = siteDetails;
+  const { title = "", description = "", image } = seo || {};
+
+  const imageURL = getAsset(image);
 
   return {
-    title: siteName,
-    description: address,
+    title: title || siteName,
+    description: description,
+    openGraph: {
+      image: imageURL,
+    },
   };
 };
 
 export default async function RootLayout({ children }) {
   const siteDetails = await getData();
   const { siteName, address, favicon, logo } = siteDetails;
-
-  console.log("RootLayout");
 
   return (
     <html lang="en">
