@@ -39,10 +39,7 @@ export default async function Home() {
                   className="collection-grid-3-item-img image-container"
                   style={{ paddingBottom: "93.68%" }}
                 >
-                  <img
-                    src="https://source.unsplash.com/random/720x675?girls-fashion$1"
-                    alt="Banner"
-                  />
+                  <img src="/images/categories/category-1.png" alt="Banner" />
                   {/* <img
                     src="https://source.unsplash.com/random/?Cryptocurrency&1"
                     alt="Banner"
@@ -66,10 +63,7 @@ export default async function Home() {
                   className="collection-grid-3-item-img image-container"
                   style={{ paddingBottom: "93.68%" }}
                 >
-                  <img
-                    src="https://source.unsplash.com/random/720x675?fashion%20girl$2"
-                    alt="Banner"
-                  />
+                  <img src="/images/categories/category-2.png" alt="Banner" />
                 </div>
                 <div className="collection-grid-3-caption-bg">
                   <h3 className="collection-grid-3-title">Fashion</h3>

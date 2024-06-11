@@ -12,4 +12,5 @@ export const ASSETS_URL = IS_PRODUCTION
 
 export const ENDPOINTS = {
   COMMON: "/common",
+  PRODUCT: "/products",
 };
