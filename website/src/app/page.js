@@ -17,11 +17,38 @@ export const getData = cache(async (params) => {
   return data;
 });
 
+export const getProducts = cache(async () => {
+  const res = await APIService.get(ENDPOINTS.PRODUCT, {
+    params: {
+      fields: ["name", "slug"],
+      filters: {},
+      populate: {
+        category: {
+          fields: ["name"],
+        },
+        cover: {
+          fields: ["url"],
+        },
+      },
+      pagination: {
+        start: 0,
+        limit: 12,
+      },
+    },
+  });
+
+  const products = get(res, "data.data", []);
+
+  return products;
+});
+
 export default async function Home() {
   const params = {
     populate: ["banners"],
   };
   const { banners } = await getData(params);
+  const products = await getProducts();
+
   return (
     <>
       <Slider banners={banners.data} />
@@ -76,7 +103,7 @@ export default async function Home() {
         </div>
       </div>
 
-      <Collections />
+      <Collections products={products} />
     </>
   );
 }

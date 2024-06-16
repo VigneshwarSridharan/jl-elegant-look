@@ -44,7 +44,7 @@ const HeaderContent = ({ isSticky, logo }) => {
                 <Link href={"/about-us"}>About Us</Link>
               </li>
               <li>
-                <Link href={"/products"}>Products</Link>
+                <Link href={"/products/all"}>Products</Link>
               </li>
               <li>
                 <Link href={"/contact-us"}>Contact Us</Link>

@@ -21,8 +21,16 @@ export const getProducts = cache(async ({ category }) => {
 
   const res = await APIService.get(ENDPOINTS.PRODUCT, {
     params: {
+      fields: ["name", "slug"],
       filters,
-      populate: "*",
+      populate: {
+        category: {
+          fields: ["name"],
+        },
+        cover: {
+          fields: ["url"],
+        },
+      },
     },
   });
 
