@@ -22,7 +22,6 @@ export default async function Home() {
     populate: ["banners"],
   };
   const { banners } = await getData(params);
-  console.log("banners", banners);
   return (
     <>
       <Slider banners={banners.data} />

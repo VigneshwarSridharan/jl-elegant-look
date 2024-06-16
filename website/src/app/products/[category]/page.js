@@ -1,8 +1,52 @@
+import { cache } from "react";
+import { ENDPOINTS } from "@/constants";
+import APIService from "@/lib/APIService";
+import { get } from "lodash";
 import Link from "next/link";
 import Filters from "./components/Filters";
 import ListProducts from "./components/ListProducts";
 
-const Products = () => {
+export const getProducts = cache(async ({ category }) => {
+  const filters = {
+    category: {},
+  };
+
+  if (category != "all") {
+    filters.category = {
+      slug: {
+        $eq: category,
+      },
+    };
+  }
+
+  const res = await APIService.get(ENDPOINTS.PRODUCT, {
+    params: {
+      filters,
+      populate: "*",
+    },
+  });
+
+  const products = get(res, "data.data", []);
+
+  return products;
+});
+export const getCategories = cache(async () => {
+  const res = await APIService.get(ENDPOINTS.CATEGORIES, {
+    params: {
+      filters: {},
+    },
+  });
+
+  const categories = get(res, "data.data", []);
+
+  return categories;
+});
+
+const Products = async ({ params }) => {
+  const { category } = params || {};
+  const products = await getProducts({ category });
+  const categories = await getCategories();
+
   return (
     <>
       <div className="holder breadcrumbs-wrap mt-0">
@@ -46,9 +90,9 @@ const Products = () => {
             </div>
           </div>
 
-          <div class="row">
+          <div className="row">
             <div className="col-lg-4 aside aside--left filter-col filter-mobile-col filter-col--sticky js-filter-col filter-col--opened-desktop">
-              <Filters />
+              <Filters categories={categories} />
             </div>
             <div className="filter-toggle js-filter-toggle">
               <div className="loader-horizontal js-loader-horizontal">
@@ -76,8 +120,8 @@ const Products = () => {
               </span>
             </div>
 
-            <div class="col-lg aside">
-              <ListProducts />
+            <div className="col-lg aside">
+              <ListProducts products={products} />
             </div>
           </div>
         </div>

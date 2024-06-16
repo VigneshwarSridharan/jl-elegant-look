@@ -1,6 +1,6 @@
 import { UncontrolledCollapse } from "reactstrap";
 
-const Filters = () => {
+const Filters = ({ categories }) => {
   return (
     <div className="filter-col-content filter-mobile-content">
       <div className="sidebar-block">
@@ -51,46 +51,13 @@ const Filters = () => {
         </div>
         <div className="sidebar-block_content">
           <ul className="category-list">
-            <li>
-              <a href="category.html" title="T-Shirts" className="open">
-                T-Shirts
-              </a>
-            </li>
-            <li>
-              <a href="category.html" title="Medical" className="open">
-                Medical
-              </a>
-            </li>
-            <li>
-              <a href="category.html" title="FoodMarket" className="open">
-                FoodMarket
-              </a>
-            </li>
-            <li>
-              <a href="category.html" title="Bikes" className="open">
-                Bikes&nbsp;<span>(12)</span>
-              </a>
-            </li>
-            <li>
-              <a href="category.html" title="Cosmetics" className="open">
-                Cosmetics&nbsp;<span>(16)</span>
-              </a>
-            </li>
-            <li>
-              <a href="category.html" title="Fishing" className="open">
-                Fishing&nbsp;<span>(20)</span>
-              </a>
-            </li>
-            <li>
-              <a href="category.html" title="Electronics" className="open">
-                Electronics&nbsp;<span>(15)</span>
-              </a>
-            </li>
-            <li>
-              <a href="category.html" title="Games" className="open">
-                Games&nbsp;<span>(14)</span>
-              </a>
-            </li>
+            {categories.map((category, inx) => {
+              return (
+                <li key={inx}>
+                  <a href="#">{category.attributes.name}</a>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>

@@ -1,7 +1,10 @@
 "use client";
+import { getAsset } from "@/lib/utils/functions";
+import { get } from "lodash";
+import Link from "next/link";
 import React, { useEffect, useRef } from "react";
 
-const Product = ({ id = 1 }) => {
+const Product = ({ id = 1, name, category, cover, slug }) => {
   const productElm = useRef(null);
 
   useEffect(() => {
@@ -31,38 +34,40 @@ const Product = ({ id = 1 }) => {
     >
       <div className="prd-inside">
         <div className="prd-img-area">
-          <a
-            href="product.html"
+          <Link
+            href={`/product/${slug}`}
             className="prd-img image-hover-scale image-container"
             style={{ paddingBottom: "128.48%" }}
           >
             <img
-              src={`/images/products/product-1.png`}
+              src={getAsset(cover)}
               alt="Leather Pegged Pants"
               className="js-prd-img fade-up ls-is-cached lazyloaded"
             />
             <div className="foxic-loader"></div>
             <div className="prd-big-squared-labels"></div>
-          </a>
+          </Link>
         </div>
         <div className="prd-info">
           <div className="prd-info-wrap">
             <div className="prd-tag">
-              <a href="#">Wedding Dress</a>
+              <Link href={`/product/${slug}`}>
+                {get(category, "data.attributes.name", "")}
+              </Link>
             </div>
             <h2 className="prd-title">
-              <a href="product.html">Leather Pegged Pants</a>
+              <Link href={`/product/${slug}`}>{name}</Link>
             </h2>
           </div>
           <div className="prd-hovers">
             <div className="prd-circle-labels"></div>
             <div className="prd-price">
               <div className="price-new">
-                {(id * 500).toLocaleString("en-IN", {
+                {/* {(id * 500).toLocaleString("en-IN", {
                   maximumFractionDigits: 0,
                   style: "currency",
                   currency: "INR",
-                })}
+                })} */}
               </div>
             </div>
             <div className="prd-action">

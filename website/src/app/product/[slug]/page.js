@@ -5,6 +5,8 @@ import Link from "next/link";
 import React, { cache } from "react";
 import ProductFullDetails from "./components/ProductFullDetails";
 import RelatedProducts from "./components/RelatedProducts";
+import { getAsset } from "@/lib/utils/functions";
+import ProductImages from "./components/ProductImages";
 
 export const getProduct = cache(async (slug) => {
   const res = await APIService.get(ENDPOINTS.PRODUCT, {
@@ -26,7 +28,14 @@ export const getProduct = cache(async (slug) => {
 export default async function Product({ params }) {
   const { slug } = params || {};
 
-  const { name, category, description, summary } = await getProduct(slug);
+  const {
+    name,
+    category,
+    description,
+    summary,
+    cover,
+    images: { data: images },
+  } = await getProduct(slug);
 
   return (
     <>
@@ -54,16 +63,7 @@ export default async function Product({ params }) {
         <div className="container js-prd-gallery" id="prdGallery">
           <div className="row prd-block prd-block--prv-bottom">
             <div className="col-md-8 col-lg-8 col-xl-8 aside--sticky js-sticky-collision">
-              <div className="aside-content">
-                <div className="mb-2 js-prd-m-holder"></div>
-                <div className="prd-block_main-image">
-                  <div className="prd-block_main-image-holder">
-                    <div className="product-main-carousel js-product-main-carousel">
-                      <img src="/images/products/product-1.png" alt="" />
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <ProductImages cover={cover} images={images} />
             </div>
             <div className="col-md-10 col-lg-10 col-xl-10 mt-1 mt-md-0">
               <div

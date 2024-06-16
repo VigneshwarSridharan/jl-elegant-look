@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { Nav, NavItem, NavLink, TabContent, TabPane } from "reactstrap";
+import Markdown from "react-markdown";
 
 const ProductFullDetails = ({ summary = "" }) => {
   const [activeTab, setActiveTab] = useState(1);
@@ -8,8 +9,8 @@ const ProductFullDetails = ({ summary = "" }) => {
     if (activeTab !== tab) setActiveTab(tab);
   };
   return (
-    <div class="holder mt-3 mt-md-5">
-      <div class="container">
+    <div className="holder mt-3 mt-md-5">
+      <div className="container">
         <Nav tabs className="product-tab">
           <NavItem>
             <NavLink
@@ -18,7 +19,7 @@ const ProductFullDetails = ({ summary = "" }) => {
               onClick={() => toggle(1)}
             >
               Description
-              <span class="toggle-arrow">
+              <span className="toggle-arrow">
                 <span></span>
                 <span></span>
               </span>
@@ -31,7 +32,7 @@ const ProductFullDetails = ({ summary = "" }) => {
               onClick={() => toggle(2)}
             >
               Size Guide
-              <span class="toggle-arrow">
+              <span className="toggle-arrow">
                 <span></span>
                 <span></span>
               </span>
@@ -40,10 +41,12 @@ const ProductFullDetails = ({ summary = "" }) => {
         </Nav>
 
         <TabContent activeTab={activeTab}>
-          <TabPane tabId={1}>{summary}</TabPane>
+          <TabPane tabId={1}>
+            <Markdown>{summary}</Markdown>
+          </TabPane>
 
           <TabPane tabId={2}>
-            <table class="table table-striped table-borderless text-center">
+            <table className="table table-striped table-borderless text-center">
               <thead>
                 <tr>
                   <th>USA</th>
