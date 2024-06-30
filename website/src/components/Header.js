@@ -2,6 +2,8 @@ import { SERVER_URL } from "@/constants";
 import { getAsset } from "@/lib/utils/functions";
 import { get } from "lodash";
 import Link from "next/link";
+import CartNav from "./CartNav";
+import Image from "next/image";
 
 const HeaderContent = ({ isSticky, logo }) => {
   const logoUrl = getAsset(logo);
@@ -53,62 +55,7 @@ const HeaderContent = ({ isSticky, logo }) => {
           </div>
           <div className="hdr-links-wrap col-auto ml-auto">
             <div className="hdr-inline-link">
-              <div className="search_container_desktop">
-                <div className="dropdn dropdn_search dropdn_fullwidth">
-                  <a href="#" className="dropdn-link js-dropdn-link only-icon">
-                    <i className="icon-search"></i>
-                    <span className="dropdn-link-txt">Search</span>
-                  </a>
-                  <div className="dropdn-content">
-                    <div className="container">
-                      <form
-                        method="get"
-                        action="#"
-                        className="search search-off-popular"
-                      >
-                        <input
-                          name="search"
-                          type="text"
-                          className="search-input input-empty"
-                          placeholder="What are you looking for?"
-                        />
-                        <button type="submit" className="search-button">
-                          <i className="icon-search"></i>
-                        </button>
-                        <a href="#" className="search-close js-dropdn-close">
-                          <i className="icon-close-thin"></i>
-                        </a>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="hdr_container_mobile show-mobile">
-                {/* <!-- Header Account --> */}
-                <div className="dropdn dropdn_account dropdn_fullheight">
-                  <a
-                    href="#"
-                    className="dropdn-link js-dropdn-link"
-                    data-panel="#dropdnAccount"
-                  >
-                    <i className="icon-user"></i>
-                    <span className="dropdn-link-txt">Account</span>
-                  </a>
-                </div>
-                {/* <!-- /Header Account --> */}
-              </div>
-              <div className="dropdn dropdn_fullheight minicart">
-                <a
-                  href="#"
-                  className="dropdn-link js-dropdn-link minicart-link"
-                  data-panel="#dropdnMinicart"
-                >
-                  <i className="icon-basket"></i>
-                  <span className="minicart-qty">3</span>
-                  {/* <span className="minicart-total hide-mobile">$34.99</span> */}
-                </a>
-              </div>
+              <CartNav />
             </div>
           </div>
         </div>

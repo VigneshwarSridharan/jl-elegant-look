@@ -1,6 +1,7 @@
 "use client";
 import { getAsset } from "@/lib/utils/functions";
 import { get } from "lodash";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useRef } from "react";
 

@@ -63,7 +63,7 @@ const ProductFullDetails = ({ summary = "" }) => {
                   <td>8</td>
                   <td>36</td>
                   <td>7</td>
-                  <td>32"</td>
+                  <td>32{'"'}</td>
                   <td>61 cm</td>
                 </tr>
                 <tr>
@@ -71,7 +71,7 @@ const ProductFullDetails = ({ summary = "" }) => {
                   <td>10</td>
                   <td>38</td>
                   <td>11</td>
-                  <td>34"</td>
+                  <td>34{'"'}</td>
                   <td>67 cm</td>
                 </tr>
                 <tr>
@@ -79,7 +79,7 @@ const ProductFullDetails = ({ summary = "" }) => {
                   <td>12</td>
                   <td>40</td>
                   <td>15</td>
-                  <td>36"</td>
+                  <td>36{'"'}</td>
                   <td>74 cm</td>
                 </tr>
                 <tr>
@@ -87,7 +87,7 @@ const ProductFullDetails = ({ summary = "" }) => {
                   <td>14</td>
                   <td>42</td>
                   <td>17</td>
-                  <td>38"</td>
+                  <td>38{'"'}</td>
                   <td>79 cm</td>
                 </tr>
                 <tr>
@@ -95,7 +95,7 @@ const ProductFullDetails = ({ summary = "" }) => {
                   <td>16</td>
                   <td>44</td>
                   <td>21</td>
-                  <td>40"</td>
+                  <td>40{'"'}</td>
                   <td>84 cm</td>
                 </tr>
               </tbody>

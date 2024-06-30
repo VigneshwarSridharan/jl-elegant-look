@@ -66,10 +66,7 @@ export default async function Product({ params }) {
               <ProductImages cover={cover} images={images} />
             </div>
             <div className="col-md-10 col-lg-10 col-xl-10 mt-1 mt-md-0">
-              <div
-                className="prd-block_info prd-block_info--style1"
-                data-prd-handle="/products/copy-of-suede-leather-mini-skirt"
-              >
+              <div className="prd-block_info prd-block_info--style1">
                 <div className="prd-block_info-top prd-block_info_item order-0 order-md-2">
                   <div className="prd-block_price prd-block_price--style2">
                     <div className="prd-block_price--actual">{name}</div>
@@ -81,10 +78,7 @@ export default async function Product({ params }) {
                 <div className="order-0 order-md-100">
                   <div className="prd-block_actions prd-block_actions--wishlist">
                     <div className="btn-wrap">
-                      <button
-                        className="btn btn--add-to-cart js-trigger-addtocart js-prd-addtocart"
-                        data-product='{"name":  "Leather Pegged Pants ",  "url ": "product.html",  "path ": "images/skins/fashion/product-page/product-01.jpg",  "aspect_ratio ": "0.78"}'
-                      >
+                      <button className="btn btn--add-to-cart js-trigger-addtocart js-prd-addtocart">
                         Add to cart
                       </button>
                     </div>

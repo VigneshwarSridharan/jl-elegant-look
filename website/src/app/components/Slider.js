@@ -1,5 +1,6 @@
 "use client";
 import { getAsset } from "@/lib/utils/functions";
+import Image from "next/image";
 import React from "react";
 import Slider from "react-slick";
 
@@ -17,7 +18,7 @@ function SimpleSlider({ banners = [] }) {
       <div className="container">
         <Slider {...settings}>
           {banners.map((banner) => (
-            <img src={getAsset(banner)} key={banner.id} />
+            <img src={getAsset(banner)} key={banner.id} alt="" />
           ))}
         </Slider>
       </div>

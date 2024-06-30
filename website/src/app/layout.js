@@ -7,6 +7,7 @@ import { ENDPOINTS } from "@/constants";
 import { get } from "lodash";
 import AppContext from "@/lib/context/AppContext";
 import { getAsset } from "@/lib/utils/functions";
+import { CartStoreProvider } from "@/providers/cart-store-provider";
 
 export const revalidate = 0;
 
@@ -99,10 +100,12 @@ export default async function RootLayout({ children }) {
       </head>
 
       <body className="has-smround-btns has-loader-bg equal-height has-sticky">
-        <Header context={siteDetails} />
+        <CartStoreProvider>
+          <Header context={siteDetails} />
 
-        <div className="page-content">{children}</div>
-        <Footer context={siteDetails} />
+          <div className="page-content">{children}</div>
+          <Footer context={siteDetails} />
+        </CartStoreProvider>
         {/* <script src="/js/vendor-special/lazysizes.min.js"></script>
         <script src="/js/vendor-special/ls.bgset.min.js"></script>
         <script src="/js/vendor-special/ls.aspectratio.min.js"></script>

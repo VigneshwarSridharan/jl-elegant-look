@@ -21,10 +21,7 @@ const ContactUs = async () => {
     siteDetails;
   return (
     <>
-      <div
-        className="holder mt-0 py-3 py-sm-5 py-md-10 bg-cover "
-        data-bgset="images/pages/contact-bg.jpg"
-      >
+      <div className="holder mt-0 py-3 py-sm-5 py-md-10 bg-cover ">
         <div className="container">
           <div className="row">
             <div className="col-12 col-md-9 col-xl-9">

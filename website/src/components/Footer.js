@@ -1,4 +1,5 @@
 import { getAsset } from "@/lib/utils/functions";
+import Image from "next/image";
 
 const Footer = ({ context }) => {
   const { address, PhoneNumbers, emailAddresses, socialMedia, logo } = context;

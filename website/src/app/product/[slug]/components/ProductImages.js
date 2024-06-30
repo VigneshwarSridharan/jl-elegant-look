@@ -1,5 +1,6 @@
 "use client";
 import { getAsset } from "@/lib/utils/functions";
+import Image from "next/image";
 import { useRef } from "react";
 import Slider from "react-slick";
 
