@@ -7,6 +7,7 @@ import ProductFullDetails from "./components/ProductFullDetails";
 import RelatedProducts from "./components/RelatedProducts";
 import { getAsset } from "@/lib/utils/functions";
 import ProductImages from "./components/ProductImages";
+import CartButton from "./components/CartButton";
 
 export const getProduct = cache(async (slug) => {
   const res = await APIService.get(ENDPOINTS.PRODUCT, {
@@ -21,6 +22,7 @@ export const getProduct = cache(async (slug) => {
   });
 
   const product = get(res, "data.data[0].attributes", {});
+  product.id = get(res, "data.data[0].id", "");
 
   return product;
 });
@@ -29,6 +31,7 @@ export default async function Product({ params }) {
   const { slug } = params || {};
 
   const {
+    id,
     name,
     category,
     description,
@@ -76,13 +79,13 @@ export default async function Product({ params }) {
                   <p>{description}</p>
                 </div>
                 <div className="order-0 order-md-100">
-                  <div className="prd-block_actions prd-block_actions--wishlist">
-                    <div className="btn-wrap">
-                      <button className="btn btn--add-to-cart js-trigger-addtocart js-prd-addtocart">
-                        Add to cart
-                      </button>
-                    </div>
-                  </div>
+                  <CartButton
+                    slug={slug}
+                    name={name}
+                    cover={cover}
+                    id={id}
+                    category={category}
+                  />
                 </div>
               </div>
             </div>

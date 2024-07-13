@@ -36,7 +36,7 @@ function Collections({ products }) {
         <div className="prd-grid-wrap">
           <div className="prd-grid data-to-show-4 data-to-show-md-3 data-to-show-sm-2 data-to-show-xs-2">
             {products.map(({ id, attributes: product }) => {
-              return <Product key={id} {...product} />;
+              return <Product key={id} {...product} id={id} />;
             })}
           </div>
         </div>

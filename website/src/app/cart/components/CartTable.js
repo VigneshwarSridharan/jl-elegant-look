@@ -1,6 +1,7 @@
 "use client";
 import { getAsset } from "@/lib/utils/functions";
 import { useCartStore } from "@/providers/cart-store-provider";
+import { get } from "lodash";
 import Link from "next/link";
 
 const CartTable = () => {
@@ -45,7 +46,9 @@ const CartTable = () => {
                     {item.name}
                   </Link>
                 </div>
-                <h2 className="cart-table-prd-name">{item.category}</h2>
+                <h2 className="cart-table-prd-name">
+                  {get(item.category, "data.attributes.name", "")}
+                </h2>
               </div>
               <div className="cart-table-prd-qty">
                 <div className="qty qty-changer">

@@ -1,12 +1,15 @@
 "use client";
 import { getAsset } from "@/lib/utils/functions";
-import { get } from "lodash";
+import { useCartStore } from "@/providers/cart-store-provider";
+import { add, get } from "lodash";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useRef } from "react";
 
-const Product = ({ id = 1, name, category, cover, slug }) => {
+const Product = ({ id, name, category, cover, slug }) => {
+  const { items, addItem } = useCartStore();
   const productElm = useRef(null);
+  const isCart = items.findIndex((item) => item.id === id) != -1;
 
   useEffect(() => {
     if (productElm.current) {
@@ -27,6 +30,19 @@ const Product = ({ id = 1, name, category, cover, slug }) => {
       }
     };
   }, []);
+
+  const handleAddToCart = () => {
+    if (!isCart) {
+      addItem({
+        id,
+        name,
+        category,
+        cover,
+        slug,
+        qty: 1,
+      });
+    }
+  };
 
   return (
     <div
@@ -73,7 +89,12 @@ const Product = ({ id = 1, name, category, cover, slug }) => {
             </div>
             <div className="prd-action">
               <div className="prd-action-left">
-                <button className="btn js-prd-addtocart">Add To Cart</button>
+                <button
+                  className="btn js-prd-addtocart"
+                  onClick={handleAddToCart}
+                >
+                  {isCart ? "Added!" : "Add To Cart"}
+                </button>
               </div>
             </div>
           </div>
