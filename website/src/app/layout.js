@@ -65,6 +65,7 @@ export default async function RootLayout({ children }) {
           href={getAsset(favicon)}
         />
         {/* <!-- Vendor CSS --> */}
+        <link href="/css/preloader.css" rel="stylesheet" />
         <link href="/css/vendor/bootstrap.min.css" rel="stylesheet" />
         {/* <!-- Latest compiled and minified CSS --> */}
         {/* <link

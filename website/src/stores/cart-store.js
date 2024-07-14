@@ -47,6 +47,7 @@ export const createCartStore = (initState = defaultInitState) => {
           set((state) => ({
             items: [...state.items, item],
           })),
+        clearCart: () => set({ items: [] }),
       }),
       { name: "cart" }
     )

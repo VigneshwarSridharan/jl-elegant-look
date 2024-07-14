@@ -15,4 +15,7 @@ export const ENDPOINTS = {
   COMMON: "/common",
   PRODUCT: "/products",
   CATEGORIES: "/categories",
+  ABOUT_US: "/about-us",
+  CONTACT_US: "/contact-us",
+  ORDERS: "/orders",
 };

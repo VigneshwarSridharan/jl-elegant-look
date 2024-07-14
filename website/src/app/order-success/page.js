@@ -1,8 +1,6 @@
 import Link from "next/link";
-import CartTable from "./components/CartTable";
-import OrderForm from "./components/OrderForm";
 
-const Cart = () => {
+const OrderSuccess = async () => {
   return (
     <>
       <div className="holder breadcrumbs-wrap mt-0">
@@ -12,7 +10,7 @@ const Cart = () => {
               <Link href="/">Home</Link>
             </li>
             <li>
-              <span>Cart</span>
+              <span>Orders</span>
             </li>
           </ul>
         </div>
@@ -20,14 +18,15 @@ const Cart = () => {
 
       <div className="holder">
         <div className="container">
-          <h1 className="text-center">Shopping Cart</h1>
-          <CartTable />
-
-          <OrderForm />
+          <h1 className="text-center">Order Placed Successfully</h1>
+          <div className="text-center">
+            <h3>Our team will contact you soon.</h3>
+            <p>Thanks for shopping with us.</p>
+          </div>
         </div>
       </div>
     </>
   );
 };
 
-export default Cart;
+export default OrderSuccess;

@@ -1,0 +1,27 @@
+version: "3"
+services:
+  elserver:
+    container_name: elserver
+    build: ./server
+    image: strapi:latest
+    restart: unless-stopped
+    # env_file: .env.server
+    environment:
+      DATABASE_CLIENT: ${DATABASE_CLIENT}
+      DATABASE_URL: ${DATABASE_URL}
+      JWT_SECRET: ${JWT_SECRET}
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
+      APP_KEYS: ${APP_KEYS}
+      NODE_ENV: ${NODE_ENV}
+    volumes:
+      - ./server/config:/opt/app/config
+      - ./server/src:/opt/app/src
+      - ./server/package.json:/opt/package.json
+      - ./server/yarn.lock:/opt/yarn.lock
+      - ./server/.env:/opt/app/.env
+      - ./server/public/uploads:/opt/app/public/uploads
+    ports:
+      - "8200:1337"
+
+volumes:
+  strapi-data:

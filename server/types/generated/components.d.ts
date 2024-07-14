@@ -35,12 +35,28 @@ export interface CommonSocialMedia extends Schema.Component {
   };
 }
 
+export interface ProductsCart extends Schema.Component {
+  collectionName: 'components_products_carts';
+  info: {
+    displayName: 'cart';
+  };
+  attributes: {
+    product: Attribute.Relation<
+      'products.cart',
+      'oneToOne',
+      'api::product.product'
+    >;
+    quantity: Attribute.Integer & Attribute.Required;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'common.seo': CommonSeo;
       'common.single-text': CommonSingleText;
       'common.social-media': CommonSocialMedia;
+      'products.cart': ProductsCart;
     }
   }
 }
