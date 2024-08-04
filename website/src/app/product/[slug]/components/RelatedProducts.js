@@ -3,7 +3,7 @@ import Product from "@/components/Product";
 import React from "react";
 import Slider from "react-slick";
 
-const RelatedProducts = () => {
+const RelatedProducts = ({ products }) => {
   const settings = {
     dots: false,
     infinite: true,
@@ -18,27 +18,13 @@ const RelatedProducts = () => {
           <h2 className="h1-style">You may also like</h2>
         </div>
         <Slider {...settings}>
-          <div className="px-15">
-            <Product id={1} />
-          </div>
-          <div className="px-15">
-            <Product id={4} />
-          </div>
-          <div className="px-15">
-            <Product id={3} />
-          </div>
-          <div className="px-15">
-            <Product id={7} />
-          </div>
-          <div className="px-15">
-            <Product id={5} />
-          </div>
-          <div className="px-15">
-            <Product id={2} />
-          </div>
-          <div className="px-15">
-            <Product id={6} />
-          </div>
+          {products.map(({ id, attributes: product }) => {
+            return (
+              <div className="px-15">
+                <Product {...product} id={id} />
+              </div>
+            );
+          })}
         </Slider>
       </div>
     </div>

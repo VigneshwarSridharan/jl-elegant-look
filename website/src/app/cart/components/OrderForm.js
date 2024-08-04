@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const OrderForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const router = useRouter();
   const { items, clearCart } = useCartStore();
   const [formData, setFormData] = useState({
@@ -19,6 +21,7 @@ const OrderForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     APIService.post(
       `${ENDPOINTS.ORDERS}/api`,
       {
@@ -44,6 +47,7 @@ const OrderForm = () => {
       }
     ).then((res) => {
       console.log(res.data);
+      setIsLoading(false);
       setFormData({
         customerName: "",
         customerEmail: "",
@@ -111,8 +115,8 @@ const OrderForm = () => {
           </div>
         </div>
       </div>
-      <button className="btn" type="submit">
-        Order Now
+      <button disabled={isLoading} className="btn" type="submit">
+        {isLoading ? "Processing..." : "Order Now"}
       </button>
     </form>
   );

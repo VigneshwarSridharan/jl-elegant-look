@@ -9,6 +9,39 @@ import { getAsset } from "@/lib/utils/functions";
 import ProductImages from "./components/ProductImages";
 import CartButton from "./components/CartButton";
 
+export const getProducts = async ({ category }) => {
+  const filters = {
+    category: {},
+  };
+
+  if (category != "all") {
+    filters.category = {
+      slug: {
+        $eq: category,
+      },
+    };
+  }
+
+  const res = await APIService.get(ENDPOINTS.PRODUCT, {
+    params: {
+      fields: ["name", "slug"],
+      filters,
+      populate: {
+        category: {
+          fields: ["name"],
+        },
+        cover: {
+          fields: ["url"],
+        },
+      },
+    },
+  });
+
+  const products = get(res, "data.data", []);
+
+  return products;
+};
+
 export const getProduct = cache(async (slug) => {
   const res = await APIService.get(ENDPOINTS.PRODUCT, {
     params: {
@@ -24,11 +57,17 @@ export const getProduct = cache(async (slug) => {
   const product = get(res, "data.data[0].attributes", {});
   product.id = get(res, "data.data[0].id", "");
 
-  return product;
+  const relatedProducts = await getProducts({
+    category: get(product.category, "data.attributes.slug", ""),
+  });
+
+  return { product, relatedProducts };
 });
 
 export default async function Product({ params }) {
   const { slug } = params || {};
+  const { product = {}, relatedProducts = [] } = await getProduct(slug);
+  console.log(relatedProducts);
 
   const {
     id,
@@ -38,7 +77,7 @@ export default async function Product({ params }) {
     summary,
     cover,
     images: { data: images },
-  } = await getProduct(slug);
+  } = product;
 
   return (
     <>
@@ -47,6 +86,9 @@ export default async function Product({ params }) {
           <ul className="breadcrumbs">
             <li>
               <Link href={"/"}>Home</Link>
+            </li>
+            <li>
+              <Link href={`/products/all`}>Products</Link>
             </li>
             <li>
               <Link
@@ -113,7 +155,9 @@ export default async function Product({ params }) {
 
       <ProductFullDetails summary={summary} />
 
-      <RelatedProducts />
+      {relatedProducts.length > 1 && (
+        <RelatedProducts products={relatedProducts} />
+      )}
     </>
   );
 }
