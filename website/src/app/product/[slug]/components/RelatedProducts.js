@@ -20,7 +20,7 @@ const RelatedProducts = ({ products }) => {
         <Slider {...settings}>
           {products.map(({ id, attributes: product }) => {
             return (
-              <div className="px-15">
+              <div className="px-15" key={id}>
                 <Product {...product} id={id} />
               </div>
             );
